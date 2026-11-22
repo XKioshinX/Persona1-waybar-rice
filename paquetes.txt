@@ -1,0 +1,1 @@
+sudo xbps-install -S nerd-fonts-symbols-ttf noto-fonts-emoji dejavu-fonts-ttf
