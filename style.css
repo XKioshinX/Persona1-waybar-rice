@@ -1,0 +1,181 @@
+/* ==========================================================================
+   PALETA PERSONA 1 (Megami Ibunroku / PSP Remake)
+   ========================================================================== */
+@define-color bg-void        #0b0710; /* Negro silueta / enredaderas */
+@define-color bg-velvet      #1a0d2e; /* Fondo oscuro violáceo */
+@define-color purple-main    #6b21a8; /* Púrpura principal */
+@define-color purple-bright  #9333ea; /* Púrpura neón / mariposas */
+@define-color purple-shadow  #4c1d95; /* Sombra desplazada */
+@define-color hermelin-gray  #9ca3af; /* Gris uniforme St. Hermelin */
+@define-color shadow-gold    #f5b700; /* Amarillo ojos de la Sombra / Logo PS1 */
+@define-color crimson-accent #e11d48; /* Rojo subtítulo japonés */
+@define-color text-white     #f3e8ff; /* Blanco con tinte lavanda */
+
+/* ==========================================================================
+   ESTILOS GENERALES
+   ========================================================================== */
+* {
+    font-family: "DejaVu Sans Mono", "Symbols Nerd Font Mono", "Noto Color Emoji", monospace;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: @text-white;
+}
+
+/* Estilo base para cada módulo (efecto tarjeta con sombra desplazada) */
+#custom-persona-emblem,
+#workspaces,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#tray {
+    background-color: @bg-void;
+    border: 1.5px solid @purple-bright;
+    padding: 2px 12px;
+    /* Sombra sólida desplazada estilo artbook de Persona 1 */
+    box-shadow: 3px 3px 0px @purple-shadow;
+}
+
+/* ==========================================================================
+   MÓDULOS IZQUIERDOS
+   ========================================================================== */
+#custom-persona-emblem {
+    background-color: @purple-main;
+    color: @shadow-gold;
+    border: 1.5px solid @shadow-gold;
+    box-shadow: 3px 3px 0px @bg-void;
+    font-size: 14px;
+    padding: 2px 14px;
+}
+
+#workspaces {
+    padding: 2px 6px;
+}
+
+#workspaces button {
+    padding: 0px 8px;
+    margin: 0px 2px;
+    color: @hermelin-gray;
+    background-color: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: @text-white;
+    background-color: @bg-velvet;
+}
+
+/* Workspace activo: contraste dorado y púrpura */
+#workspaces button.active {
+    color: @shadow-gold;
+    background-color: @purple-main;
+    border-bottom: 2px solid @shadow-gold;
+}
+
+/* Workspace urgente: rojo carmesí */
+#workspaces button.urgent {
+    color: @text-white;
+    background-color: @crimson-accent;
+}
+
+#window {
+    color: @hermelin-gray;
+    border-color: @purple-shadow;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   MÓDULO CENTRAL (RELOJ)
+   ========================================================================== */
+#clock {
+    background-color: @bg-velvet;
+    color: @text-white;
+    border: 1.5px solid @shadow-gold;
+    box-shadow: 3px 3px 0px @purple-main;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   MÓDULOS DERECHOS
+   ========================================================================== */
+#pulseaudio {
+    color: @text-white;
+}
+
+#pulseaudio.muted {
+    color: @hermelin-gray;
+    border-color: @hermelin-gray;
+    box-shadow: 3px 3px 0px @bg-void;
+}
+
+#network {
+    color: @purple-bright;
+}
+
+#network.disconnected {
+    color: @crimson-accent;
+    border-color: @crimson-accent;
+}
+
+#cpu {
+    color: @hermelin-gray;
+}
+
+#memory {
+    color: @text-white;
+}
+
+#battery {
+    color: @shadow-gold;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #4ade80;
+    border-color: #4ade80;
+}
+
+#battery.warning:not(.charging) {
+    color: @shadow-gold;
+    border-color: @shadow-gold;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @crimson-accent;
+    color: @text-white;
+    border-color: @shadow-gold;
+}
+
+#tray {
+    background-color: @bg-velvet;
+}
+
+/* ==========================================================================
+   TOOLTIPS (Ventanas emergentes)
+   ========================================================================== */
+tooltip {
+    background-color: @bg-void;
+    border: 1.5px solid @shadow-gold;
+    border-radius: 2px;
+}
+
+tooltip label {
+    color: @text-white;
+    padding: 4px;
+}
