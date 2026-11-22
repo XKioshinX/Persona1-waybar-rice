@@ -1,1 +1,2 @@
 sudo xbps-install -S nerd-fonts-symbols-ttf noto-fonts-emoji dejavu-fonts-ttf
+sudo pacman -S ttf-nerd-fonts-symbols noto-fonts-emoji ttf-dejavu
